@@ -45,9 +45,37 @@ public class DubboSPITest {
         System.out.println(loader);
         System.out.println(loader.getDefaultExtensionName());
 
-
         Fruit defaultExtension = loader.getDefaultExtension();
         defaultExtension.getName();
+    }
+
+    /**
+     * 测试getDefaultExtension
+     */
+    @Test
+    public void extensionLoaderAdaptiveTest() {
+        ExtensionLoader<Fruit> loader = ExtensionLoader.getExtensionLoader(Fruit.class);
+        System.out.println(loader);
+        System.out.println(loader.getAdaptiveExtension());
+
+        Fruit adaptiveExtension = loader.getAdaptiveExtension();
+        adaptiveExtension.getName();
+    }
+
+    /**
+     * 测试getDefaultExtension
+     */
+    @Test
+    public void extensionLoaderAdaptiveTest1() {
+        ExtensionLoader<Fruit> loader = ExtensionLoader.getExtensionLoader(Fruit.class);
+        System.out.println(loader);
+        System.out.println(loader.getAdaptiveExtension());
+
+        //AdaptiveFruit可以理解为装饰器模式中的装饰器，通过setAdaptivePolicy指定装饰对象是Apple
+        AdaptiveFruit adaptiveExtension = (AdaptiveFruit) loader.getAdaptiveExtension();
+        adaptiveExtension.setAdaptivePolicy("apple");
+
+        adaptiveExtension.getName();
     }
 
 }
