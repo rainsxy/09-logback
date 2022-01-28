@@ -1,5 +1,6 @@
 package com.abc.bean;
 
+import org.apache.dubbo.common.URL;
 import org.apache.dubbo.common.extension.ExtensionLoader;
 import org.junit.Test;
 
@@ -50,7 +51,7 @@ public class DubboSPITest {
     }
 
     /**
-     * 测试getDefaultExtension
+     * 测试getAdaptiveExtension
      */
     @Test
     public void extensionLoaderAdaptiveTest() {
@@ -63,7 +64,7 @@ public class DubboSPITest {
     }
 
     /**
-     * 测试getDefaultExtension
+     * 测试getAdaptiveExtension
      */
     @Test
     public void extensionLoaderAdaptiveTest1() {
@@ -76,6 +77,24 @@ public class DubboSPITest {
         adaptiveExtension.setAdaptivePolicy("apple");
 
         adaptiveExtension.getName();
+    }
+
+
+    /**
+     * 测试 getAdaptiveExtension -方法级别
+     */
+    @Test
+    public void extensionLoaderAdaptiveMethodTest() {
+        ExtensionLoader<Color> loader = ExtensionLoader.getExtensionLoader(Color.class);
+        System.out.println(loader);
+        System.out.println(loader.getAdaptiveExtension());
+
+        //AdaptiveFruit可以理解为装饰器模式中的装饰器，通过setAdaptivePolicy指定装饰对象是Apple
+        Color adaptiveExtension = loader.getAdaptiveExtension();
+        adaptiveExtension.painting(URL.valueOf("xxx://localhost/ooo?color=white"));//it is white
+
+
+        adaptiveExtension.painting(URL.valueOf("xxx://localhost/ooo?color=red"));//it is red!
     }
 
 }
