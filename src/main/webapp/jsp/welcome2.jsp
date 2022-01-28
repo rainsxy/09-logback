@@ -5,6 +5,6 @@
     <title>welcome</title>
 </head>
 <body>
-    student = ${student}
+    student = aaaa
 </body>
 </html>

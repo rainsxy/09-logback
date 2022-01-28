@@ -26,10 +26,10 @@ public class SomeController {
         return "/jsp/welcome.jsp";
     }
 
-    @PostMapping("/log")
+    @RequestMapping("/log")
     public String log() throws Exception {
         log.debug("dsakdhsalflkdsfds");
-        return "/jsp/welcome.jsp";
+        return "/jsp/welcome2.jsp";
     }
 
 }
