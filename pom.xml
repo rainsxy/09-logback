@@ -18,8 +18,6 @@
         <!--<spring.version>5.0.1.RELEASE</spring.version>-->
     </properties>
 
-
-
     <dependencies>
         <!--DUBBO依赖 -->
         <dependency>

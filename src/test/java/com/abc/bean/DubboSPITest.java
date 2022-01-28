@@ -1,18 +1,12 @@
 package com.abc.bean;
 
-import com.abc.bean.Fruit;
 import org.apache.dubbo.common.extension.ExtensionLoader;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * 测试dubbo spi
  * @author rains
  */
-//@RunWith(SpringRunner.class)
-//@SpringBootTest
 public class DubboSPITest {
 
     /**
@@ -41,4 +35,19 @@ public class DubboSPITest {
         Fruit apple = loader.getExtension("apple");
         apple.getName();
     }
+
+    /**
+     * 测试getDefaultExtension
+     */
+    @Test
+    public void extensionLoaderDefaultTest() {
+        ExtensionLoader<Fruit> loader = ExtensionLoader.getExtensionLoader(Fruit.class);
+        System.out.println(loader);
+        System.out.println(loader.getDefaultExtensionName());
+
+
+        Fruit defaultExtension = loader.getDefaultExtension();
+        defaultExtension.getName();
+    }
+
 }
